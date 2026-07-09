@@ -673,29 +673,29 @@ Same reference-type behavior. Where it'd differ is with value types (`int`​, `
 
 ‍
 
-In C#, it is possible to use the same method name but with a different method **signature** (([6.0.2 Method signature](/everything,%20or%20a%20glossary%20of%20mostly%20everything,%20aka%20please%20explain%20all%20these%20things%20to%20me.md#20260708220153-u5nzlkb))).
+In C#, it is possible to use the same method name but with a different method **signature** (([6.0.2 Method signature](appendxck/everything,%20or%20a%20glossary%20of%20mostly%20everything,%20aka%20please%20explain%20all%20these%20things%20to%20me.md#20260708220153-u5nzlkb))).
 
 --> can define a method with different versions (e.g. a method called `Add()` where one version accepts two parameters, and another version that accepts three parameters)
 
 ‍
 
-## 6.0.2 Method signature
-
-from the **Yellow Book (p. 206):**
-
-A given C# method has a particular signature which allows it to be uniquely identified in a program. The signature is the name of the method and the type and order of the parameters to that method:
-
-- `void Silly(int a, int b)` – has the signature of the name Silly and two int parameters.
-- `void Silly(float a, int b)` – has the signature of the name Silly and an float parameter followed by an integer parameter.
-
-This means that the code:
-
-- `Silly(1, 2) ;` - would call the first method, whereas:
-- `Silly(1.0f, 2) ;` - would call the second.
-
-Note that the type of the method has no effect on the signature.
-
----
+> ### 6.0.2 Method signature
+>
+> from the **Yellow Book (p. 206):**
+>
+> A given C# method has a particular signature which allows it to be uniquely identified in a program. The signature is the name of the method and the type and order of the parameters to that method:
+>
+> - `void Silly(int a, int b)` – has the signature of the name Silly and two int parameters.
+> - `void Silly(float a, int b)` – has the signature of the name Silly and an float parameter followed by an integer parameter.
+>
+> This means that the code:
+>
+> - `Silly(1, 2) ;` - would call the first method, whereas:
+> - `Silly(1.0f, 2) ;` - would call the second.
+>
+> Note that the type of the method has no effect on the signature.
+>
+> ---
 
 ‍
 
@@ -818,7 +818,7 @@ Step by step:
 - Proof:
 
   - `Add(null, null)` --> literally nothing in this call tells the compiler which overload to use
-  - `null`​ is not typed to `int[]`​ or `float[]`​ on its own #prog_core#​ [3. Data types](/everything,%20or%20a%20glossary%20of%20mostly%20everything,%20aka%20please%20explain%20all%20these%20things%20to%20me.md#20260624183008-8itvsx1)
+  - `null`​ is not typed to `int[]`​ or `float[]`​ on its own #prog_core#​ [3. Data types](appendxck/everything,%20or%20a%20glossary%20of%20mostly%20everything,%20aka%20please%20explain%20all%20these%20things%20to%20me.md#20260624183008-8itvsx1)
   - This is illegal in C#; will not even compile.
 
 ‍
@@ -876,11 +876,11 @@ int[] y = CrossProduct((float[])null, (float[])null);
 
 ### 3.1.7 TL;DR / review
 
-Overload resolution in C# is decided by **parameter types (and count)**  at the [call site](/everything,%20or%20a%20glossary%20of%20mostly%20everything,%20aka%20please%20explain%20all%20these%20things%20to%20me.md#20260709140726-krktr6u) — never by return type or by what you're assigning the result to.
+Overload resolution in C# is decided by **parameter types (and count)**  at the [call site](appendxck/everything,%20or%20a%20glossary%20of%20mostly%20everything,%20aka%20please%20explain%20all%20these%20things%20to%20me.md#20260709140726-krktr6u) — never by return type or by what you're assigning the result to.
 
 If two overloads could match a given call equally, i.e. method overloading is ambiguous, to resolve this, requires either:
 
-- (1) [casting](/everything,%20or%20a%20glossary%20of%20mostly%20everything,%20aka%20please%20explain%20all%20these%20things%20to%20me.md#20260709121757-02532je);
+- (1) [casting](appendxck/everything,%20or%20a%20glossary%20of%20mostly%20everything,%20aka%20please%20explain%20all%20these%20things%20to%20me.md#20260709121757-02532je);
 - (2) a distinct parameter list (including count).
 
 ‍
@@ -1162,16 +1162,16 @@ new, not yet, nevertheless... these things.
 - private vs public fields
 - duplication
 - base constructor: `base(...)` and inheritance chains { Ruby equivalent: "super constructor" }
-- ["targeted constructor's body"](/language%20precision.md#20260709154958-z8dhuth)
+- ["targeted constructor's body"](appendxck/language%20precision.md#20260709154958-z8dhuth)
 
 ‍
 
-### ([private vs public fields](/everything,%20or%20a%20glossary%20of%20mostly%20everything,%20aka%20please%20explain%20all%20these%20things%20to%20me.md#20260709150120-27azof9))
+### ([private vs public fields](appendxck/everything,%20or%20a%20glossary%20of%20mostly%20everything,%20aka%20please%20explain%20all%20these%20things%20to%20me.md#20260709150120-27azof9))
 
-#### 7.1.1 public vs private fields
-
-- **​`public`​**​ — accessible from ​*anywhere*​: inside the class, from other classes, from your `Main`​ method, wherever. That's why in your earlier version, `Console.WriteLine($"{p1.name}, {p1.age}")` worked fine — outside code could reach in and read the fields directly via dot notation.
-- **​`private`​**​ — only accessible from *inside the class itself*. No other class (including your `Main`​/top-level code where `p1`​, `p2`​, `p3`​ live) can touch `name`​ or `age` directly.
+> ### 7.1.1 public vs private fields
+>
+> - **​`public`​**​ — accessible from ​*anywhere*​: inside the class, from other classes, from your `Main`​ method, wherever. That's why in your earlier version, `Console.WriteLine($"{p1.name}, {p1.age}")` worked fine — outside code could reach in and read the fields directly via dot notation.
+> - **​`private`​**​ — only accessible from *inside the class itself*. No other class (including your `Main`​/top-level code where `p1`​, `p2`​, `p3`​ live) can touch `name`​ or `age` directly.
 
 - **This actually breaks your current code.**  You've marked `name`​ and `age`​ as `private`​, but you're still doing `p1.name`​ and `p1.age`​ in `Console.WriteLine`​ from outside the class. That won't compile anymore — you'd get an error like `'Person.name' is inaccessible due to its protection level`. Your comment even flags this ("could be private... would not be accessible outside of the class") but the rest of the code hasn't caught up to that change yet.
 - **How you'd actually fix it**​: add a way for outside code to *read* the private fields without letting them be freely overwritten. Two common options:
